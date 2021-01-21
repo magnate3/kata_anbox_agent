@@ -1,0 +1,18 @@
+[Unit]
+Description=Openvmi Container Manager
+After=Openvmi-Xvfb-Manger.service kata-agent.service
+
+[Service]
+# 环境变量
+Environment='DISPLAY=:8'
+Environment='SWIFTSHADER_PATH=/opt/openvmi/libs/libswiftshader'
+Environment='DOCKDROID_LOG_LEVEL=info'
+Environment='HOME=/var/run'
+Environment='LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/opt/openvmi/libs/libswiftshader/'
+
+ExecStart=/opt/openvmi/bin/openvmi session-manager  --run-multiple=pcl-916-01-00:10  --adb-port=6007 --experimental --single-window --window-size=720,1280  --no-touch-emulation  --software-rendering
+#ExecStart=/opt/openvmi/bin/openvmi --run-multiple=pcl-916-01-00:10 --encoder-fb-id=23 --adb-port=6007 --experimental --single-window --window-size=720,1280  --no-touch-emulation  --software-rendering
+#ExecStart=/opt/openvmi/bin/openvmi --run-multiple=pcl-916-01-00:10 --encoder-fb-id=23 --adb-port=6007 --experimental --single-window --window-size=720,1280 --fb-fps=60 --no-touch-emulation
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,11 @@
+[Unit]
+Description=Openvmi Xvfb Manger
+
+[Service]
+StandardOutput=null
+StandardError=null
+Type=simple
+ExecStart=/usr/bin/Xvfb :8 -ac -screen 0 720x1280x24
+
+[Install]
+WantedBy=multi-user.target
